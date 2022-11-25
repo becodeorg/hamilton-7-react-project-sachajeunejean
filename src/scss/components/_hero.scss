@@ -1,0 +1,96 @@
+.hero {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    margin-top: 15px;
+    color: white;
+    margin-bottom: -35px;
+
+    .hide {
+        display: none;
+    }
+
+    .pop-up-delete {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        position: absolute;
+        top: 27.5%;
+        left: 50%;
+        transform: translate(-50%, 0);
+        width: 85%;
+        background: #202126;
+
+        p {
+            font-family: "Montserrat", sans-serif;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .buttons-delete {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 80%;
+
+            button {
+                font-family: "Montserrat", sans-serif;
+                width: 75px;
+                height: 30px;
+                outline: none;
+                border: none;
+                color: white;
+                font-size: 12px;
+            }
+
+            .btn-confirm {
+                background-color: green;
+            }
+
+            .btn-decline {
+                background-color: red;
+            }
+        }
+    }
+
+    .hero-title {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        font-family: "Montserrat", sans-serif;
+        font-size: 12px;
+
+        h2 {
+            font-size: 12px;
+            text-decoration: underline;
+            margin-right: 10px;
+        }
+    }
+
+    .hero-filters {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        padding: 20px;
+        font-family: "Montserrat", sans-serif;
+        gap: 10px;
+
+        li {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            font-size: 11px;
+            border: 1px solid white;
+            padding: 10px;
+            border-radius: 10px;
+
+            &::before {
+                content: "x";
+                margin-right: 5px;
+                color: gray;
+            }
+        }
+    }
+}

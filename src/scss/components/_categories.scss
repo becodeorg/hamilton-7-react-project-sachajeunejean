@@ -1,0 +1,80 @@
+.categories {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+
+    .category {
+        h3 {
+            margin-bottom: 20px;
+        }
+
+        .category-list {
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+
+            .card {
+                display: flex;
+                flex-direction: column;
+                margin: auto;
+                width: 95%;
+                padding: 15px;
+                background-color: #202126;
+                margin-bottom: 50px;
+
+                .game-image {
+                    background-position: center;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    width: 100%;
+                    height: 150px;
+                }
+
+                .top-card-wrapper {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+
+                    .platforms {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        list-style-type: none;
+
+                        li {
+                            margin-right: 8px;
+
+                            img {
+                                width: 15px;
+                                height: 15px;
+                            }
+                        }
+                    }
+                }
+
+                h3 {
+                    font-size: 26px;
+                }
+
+                p {
+                    font-size: 14px;
+                    color: rgba(128, 128, 128);
+                    max-width: 100%;
+                    margin-bottom: 8px;
+
+                    span {
+                        color: rgb(85, 85, 85);
+                    }
+
+                    .genre {
+                        margin-left: 5px;
+                    }
+                }
+            }
+        }
+    }
+}

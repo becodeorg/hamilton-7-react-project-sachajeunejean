@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Filters = ({ isSearchClicked, setFilters }) => {
+const Filters = ({ isSearchClicked, setFilters, setFiltersElement }) => {
 	const [isIconClicked, setIsIconCliked] = useState(false);
 	const [showMenu, setShowMenu] = useState(false);
 
@@ -11,6 +11,14 @@ const Filters = ({ isSearchClicked, setFilters }) => {
 
 	const handleSubmitFilters = (e) => {
 		e.preventDefault();
+
+		const newFiltersElements = [];
+		for (let i = 0; i < e.target.length; i++) {
+			if (e.target.elements[i].checked) {
+				newFiltersElements.push(e.target.elements[i]);
+			}
+		}
+		setFiltersElement([...newFiltersElements]);
 
 		const newFilters = [];
 		for (let i = 0; i < e.target.length; i++) {
@@ -32,6 +40,23 @@ const Filters = ({ isSearchClicked, setFilters }) => {
 			<div className={showMenu ? "menu" : "hide"}>
 				<h2>FILTERS</h2>
 				<form onSubmit={handleSubmitFilters} className="filters-container">
+				<h3>Parameters</h3>
+					<div className="filters-container-grid">
+						<ul className="filters-grid">
+							<li className="item">
+								<input id="date-added" type="checkbox" />
+								<label htmlFor="date-added" className="date-added">Date Added</label>
+							</li>
+							<li className="item">
+								<input id="date-release" type="checkbox" />
+								<label htmlFor="date-release" className="date-release">Release date</label>
+							</li>
+							<li className="item">
+								<input id="name" type="checkbox" />
+								<label htmlFor="name">Name</label>
+							</li>
+						</ul>
+					</div>
 					<h3>Platforms</h3>
 					<div className="filters-container-grid">
 						<ul className="filters-grid">
@@ -46,6 +71,10 @@ const Filters = ({ isSearchClicked, setFilters }) => {
 							<li className="item">
 								<input id="pc" type="checkbox" />
 								<label htmlFor="pc">PC</label>
+							</li>
+							<li className="item">
+								<input id="switch" type="checkbox" />
+								<label htmlFor="switch">Switch</label>
 							</li>
 						</ul>
 					</div>
@@ -86,7 +115,7 @@ const Filters = ({ isSearchClicked, setFilters }) => {
 							</li>
 						</ul>
 					</div>
-					<button className="btn-submit-filters" type="submit">Save filters</button>
+					<button className="btn-submit-filters" type="submit">Apply filters</button>
 				</form>
 			</div>
 		</div>
