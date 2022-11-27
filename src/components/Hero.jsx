@@ -11,7 +11,6 @@ const Hero = ({ filters, setFilters, filtersElement, setFiltersElement }) => {
 
 	const confirmFilterDelete = () => {
 		let newFilters = [];
-		let newCheckboxes = [];
 
 		for (let i = 0; i < filters.length; i++) {
 			if (filterSelected !== filters[i]) {

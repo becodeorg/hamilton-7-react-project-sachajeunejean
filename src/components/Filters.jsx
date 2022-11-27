@@ -10,6 +10,8 @@ const Filters = ({ isSearchClicked, setFilters, setFiltersElement }) => {
 	};
 
 	const handleSubmitFilters = (e) => {
+		setIsIconCliked(!isIconClicked);
+		setShowMenu(!showMenu);
 		e.preventDefault();
 
 		const newFiltersElements = [];
@@ -45,11 +47,11 @@ const Filters = ({ isSearchClicked, setFilters, setFiltersElement }) => {
 						<ul className="filters-grid">
 							<li className="item">
 								<input id="date-added" type="checkbox" />
-								<label htmlFor="date-added" className="date-added">Date Added</label>
+								<label htmlFor="date-added" className="date-added">Date-Added</label>
 							</li>
 							<li className="item">
 								<input id="date-release" type="checkbox" />
-								<label htmlFor="date-release" className="date-release">Release date</label>
+								<label htmlFor="date-release" className="date-release">Release-Date</label>
 							</li>
 							<li className="item">
 								<input id="name" type="checkbox" />

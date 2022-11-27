@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Search = ({ setSearchInput, isSearchClicked, setIsSearchClicked }) => {
+	const navigate = useNavigate();
+
 	const [isIconClicked, setIsIconCliked] = useState(false);
 	const [showInputSearch, setShowInputSearch] = useState(false);
 
@@ -10,10 +13,11 @@ const Search = ({ setSearchInput, isSearchClicked, setIsSearchClicked }) => {
 		setIsSearchClicked(!isSearchClicked);
 	};
 
-	const handleKeyDown = (e) => {
-		if (e.key === 'Enter' && e.target.value) {
-			setSearchInput(e.target.value);
-		}
+	const onSubmitForm = (e) => {
+		e.preventDefault();
+
+		setSearchInput(e.target[0].value);
+		navigate(`/search-results`);
 	};
 
 	return (
@@ -21,9 +25,9 @@ const Search = ({ setSearchInput, isSearchClicked, setIsSearchClicked }) => {
 			<span onClick={handleIconClick} className="search-icon material-symbols-outlined">
 				{isIconClicked ? "close" : "search"}
 			</span>
-			<div onKeyDown={handleKeyDown} className={showInputSearch ? "container-input-search" : "hide"}>
+			<form onSubmit={onSubmitForm} className={showInputSearch ? "container-input-search" : "hide"}>
 				<input className="search-input" type="text" placeholder="Search a game..." />
-			</div>
+			</form>
 		</div>
 	);
 };

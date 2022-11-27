@@ -19,7 +19,7 @@ const Card = ({ gameInfos }) => {
 
 		for (let platform of gameInfos.platforms) {
 			if (!platform.platform.slug.includes("xbox-series") && !platform.platform.slug.includes("ios")) {
-				if (platform.platform.slug.includes("xbox")) {
+				if (platform.platform.slug.includes("xbox") && !plats.includes("xbox")) {
 					plats.push("xbox");
 				} else if (platform.platform.slug.includes("playstation") && !plats.includes("playstation")) {
 					plats.push("playstation");
@@ -62,7 +62,7 @@ const Card = ({ gameInfos }) => {
 						}
 					</ul>
 					<div className="rating-container">
-						<p>{Math.floor(gameInfos.rating)}/5</p>
+						<p>Score : {Math.floor(gameInfos.rating)}/5</p>
 					</div>
 			</div>
 			<h3>{gameInfos.name}</h3>
