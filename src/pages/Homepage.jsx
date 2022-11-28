@@ -25,13 +25,14 @@ const Homepage = ({ setSearchInput, filtersElement, setFiltersElement, filters, 
 
 		let lastMonthDate = `${year}-${month}-${day}`;
 
-		const response = await axios.get(`https://api.rawg.io/api/games?key=5413a8afe0ff47fb974634bca7ebdcb5&ordering=-rating&dates=${lastMonthDate},${currentDate}&page_size=8`);
+		const response = await axios.get(`https://api.rawg.io/api/games?key=5413a8afe0ff47fb974634bca7ebdcb5&ordering=-rating&dates=${lastMonthDate},${currentDate}&page_size=20`);
 		
 		const dataFetched = [...response.data.results];
 		let games = [];
 		for (let data of dataFetched) {
 			// name, release date, platforms, rating, genres, bg image
 			const game = {
+				id: data.id,
 				name: data.name,
 				date: data.released,
 				rating: data.rating,
@@ -65,12 +66,13 @@ const Homepage = ({ setSearchInput, filtersElement, setFiltersElement, filters, 
 
 		let lastWeekDate = `${year}-${month}-${day}`;
 
-		const response = await axios.get(`https://api.rawg.io/api/games?key=5413a8afe0ff47fb974634bca7ebdcb5&dates=${lastWeekDate},${currentDate}&page_size=8`);
+		const response = await axios.get(`https://api.rawg.io/api/games?key=5413a8afe0ff47fb974634bca7ebdcb5&dates=${lastWeekDate},${currentDate}&page_size=20`);
 		const dataFetched = [...response.data.results];
 		let games = [];
 		for (let data of dataFetched) {
 			// name, release date, platforms, rating, genres, bg image
 			const game = {
+				id: data.id,
 				name: data.name,
 				date: data.released,
 				rating: data.rating,
@@ -104,13 +106,14 @@ const Homepage = ({ setSearchInput, filtersElement, setFiltersElement, filters, 
 
 		let nextWeekDate = `${year}-${month}-${day}`;
 
-		const response = await axios.get(`https://api.rawg.io/api/games?key=5413a8afe0ff47fb974634bca7ebdcb5&dates=2022-11-12,2022-11-19&page_size=8`);
+		const response = await axios.get(`https://api.rawg.io/api/games?key=5413a8afe0ff47fb974634bca7ebdcb5&dates=2022-11-12,2022-11-19&page_size=20`);
 		
 		const dataFetched = [...response.data.results];
 		let games = [];
 		for (let data of dataFetched) {
 			// name, release date, platforms, rating, genres, bg image
 			const game = {
+				id: data.id,
 				name: data.name,
 				date: data.released,
 				rating: data.rating,

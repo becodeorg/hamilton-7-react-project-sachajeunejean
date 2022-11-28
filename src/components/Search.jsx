@@ -16,8 +16,10 @@ const Search = ({ setSearchInput, isSearchClicked, setIsSearchClicked }) => {
 	const onSubmitForm = (e) => {
 		e.preventDefault();
 
-		setSearchInput(e.target[0].value);
-		navigate(`/search-results`);
+		if (e.target[0].value) {
+			setSearchInput(e.target[0].value);
+			navigate(`/search-results`);
+		}
 	};
 
 	return (

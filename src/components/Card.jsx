@@ -4,10 +4,16 @@ const platformsList = {
 	"pc": "./src/assets/icons/computer.png",
 	"playstation": "./src/assets/icons/playstation-logotype.png",
 	"xbox": "./src/assets/icons/xbox-logo.png",
+	"xbox360": "./src/assets/icons/xbox-360-control-game-tool.png",
+	"xbox-series-x": "./src/assets/icons/xbox-360-control-game-tool.png",
 	"nintendo-switch": "./src/assets/icons/nintendo-switch.png",
 	"macos": "./src/assets/icons/apple.png",
+	"ios": "./src/assets/icons/apple.png",
 	"android": "./src/assets/icons/android.png",
-	"linux": "./src/assets/icons/linux-logo.png"
+	"linux": "./src/assets/icons/linux-logo.png",
+	"nintendo-ds": "./src/assets/icons/nintendo-ds.png",
+	"ps-vita": "./src/assets/icons/ps-logo-of-games.png",
+	"psp": "./src/assets/icons/ps-logo-of-games.png"
 }
 
 const Card = ({ gameInfos }) => {
@@ -18,7 +24,7 @@ const Card = ({ gameInfos }) => {
 		let plats = [];
 
 		for (let platform of gameInfos.platforms) {
-			if (!platform.platform.slug.includes("xbox-series") && !platform.platform.slug.includes("ios")) {
+			// if (!platform.platform.slug.includes("xbox-series") && !platform.platform.slug.includes("ios")) {
 				if (platform.platform.slug.includes("xbox") && !plats.includes("xbox")) {
 					plats.push("xbox");
 				} else if (platform.platform.slug.includes("playstation") && !plats.includes("playstation")) {
@@ -28,7 +34,7 @@ const Card = ({ gameInfos }) => {
 						plats.push(platform.platform.slug);
 					}
 				}
-			}
+			// }
 		}
 
 		setPlatforms(plats);
@@ -66,9 +72,10 @@ const Card = ({ gameInfos }) => {
 					</div>
 			</div>
 			<h3>{gameInfos.name}</h3>
-			<p>Released: <span className="card-date">{gameInfos.date}</span></p>
-			<p>Genres: {genres.map((genre, key) => <span key={key} className="genre">{genre}</span>)}
-			</p>
+			<div className="game-infos">
+				<p>Released: <span className="card-date">{gameInfos.date}</span></p>
+				<p>Genres: {genres.map((genre, key) => <span key={key} className="genre">{genre}</span>)}</p>
+			</div>
 		</li>
 	);
 };

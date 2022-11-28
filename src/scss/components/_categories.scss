@@ -25,6 +25,7 @@
             .card {
                 display: flex;
                 flex-direction: column;
+                justify-content: space-between;
                 margin: auto;
                 width: 100%;
                 max-width: 300px;
@@ -75,21 +76,28 @@
                     }
                 }
 
-                p {
+                .game-infos {
                     display: flex;
-                    flex-wrap: wrap;
-                    font-size: 14px;
-                    color: rgba(128, 128, 128);
-                    max-width: 100%;
-                    margin-bottom: 8px;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    height: 40px;
+                    margin-top: -20px;
 
-                    span {
-                        color: rgb(85, 85, 85);
-                        margin-left: 5px;
-                    }
+                    p {
+                        display: flex;
+                        flex-wrap: wrap;
+                        font-size: 14px;
+                        color: rgba(128, 128, 128);
+                        max-width: 100%;
 
-                    .genre {
-                        margin-left: 5px;
+                        span {
+                            color: rgb(85, 85, 85);
+                            margin-left: 5px;
+                        }
+
+                        .genre {
+                            margin-left: 5px;
+                        }
                     }
                 }
             }
