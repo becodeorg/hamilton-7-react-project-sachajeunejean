@@ -1,3 +1,67 @@
 .game-section {
+    display: flex;
+    flex-direction: column;
     color: white;
+    padding: 30px;
+    font-family: "Montserrat", sans-serif;
+    max-width: 1300px;
+    margin: auto;
+
+    h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    .carousel-root {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .screens-bottom {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 40px;
+
+        .left-side {
+            .platforms {
+                display: flex;
+                flex-direction: row;
+                list-style-type: none;
+
+                li {
+                    margin-right: 8px;
+
+                    img {
+                        width: 15px;
+                        height: 15px;
+                    }
+                }
+            }
+        }
+    }
+
+    .about {
+        margin-bottom: 20px;
+
+        h3 {
+            font-size: 22px;
+            text-decoration: underline;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 14px;
+            font-weight: 300;
+        }
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .game-section {
+        h2 {
+            font-size: 42px;
+        }
+    }
 }

@@ -58,6 +58,7 @@ const Card = ({ gameInfos, filters, setGame }) => {
 	useEffect(() => {
 		getPlatforms();
 		getGenres();
+		console.log(gameInfos.id);
 	}, []);
 
 	return (
@@ -77,13 +78,13 @@ const Card = ({ gameInfos, filters, setGame }) => {
 					</div>
 			</div>
 			<h3>
-				<Link onClick={onClickTitle} to={{pathname:`/SingleGame/${gameInfos.slug}`}}>
+				<Link onClick={onClickTitle} to={{pathname:`/SingleGame/${gameInfos.id}`}}>
 					{gameInfos.name}
 				</Link>
 			</h3>
 			<div className="game-infos">
 				<p>Released: <span className="card-date">{gameInfos.date}</span></p>
-				<p>Genres: {genres.map((genre, key) => <span key={key} className="genre">{genre}</span>)}</p>
+				<p className="genres">Genres: {genres.map((genre, key) => <span key={key} className="genre">{genre}</span>)}</p>
 			</div>
 		</li>
 	);

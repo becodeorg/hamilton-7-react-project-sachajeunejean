@@ -16,6 +16,7 @@ const SearchResults = ({ searchInput, setSearchInput, filtersElement, setFilters
 		for (let data of response.data.results) {
 			// name, release date, platforms, rating, genres, bg image
 			const game = {
+				id: data.id,
 				name: data.name,
 				date: data.released,
 				rating: data.rating,

@@ -17,7 +17,7 @@ const Homepage = ({ setSearchInput, filtersElement, setFiltersElement, filters, 
 		let currentDate = `${year}-${month}-${day}`;
 
 		date = new Date();
-		date.setDate(date.getDate() - 30);
+		date.setDate(date.getDate() - 14);
 
 		day = date.getDate();
 		month = date.getMonth() + 1;
@@ -59,7 +59,7 @@ const Homepage = ({ setSearchInput, filtersElement, setFiltersElement, filters, 
 		let currentDate = `${year}-${month}-${day}`;
 
 		date = new Date();
-		date.setDate(date.getDate() - 7);
+		date.setDate(date.getDate() - 30);
 
 		day = date.getDate();
 		month = date.getMonth() + 1;
@@ -100,7 +100,7 @@ const Homepage = ({ setSearchInput, filtersElement, setFiltersElement, filters, 
 		let currentDate = `${year}-${month}-${day}`;
 
 		date = new Date();
-		date.setDate(date.getDate() + 7);
+		date.setDate(date.getDate() + 30);
 
 		day = date.getDate();
 		month = date.getMonth() + 1;
@@ -108,7 +108,7 @@ const Homepage = ({ setSearchInput, filtersElement, setFiltersElement, filters, 
 
 		let nextWeekDate = `${year}-${month}-${day}`;
 
-		const response = await axios.get(`https://api.rawg.io/api/games?key=5413a8afe0ff47fb974634bca7ebdcb5&dates=2022-11-12,2022-11-19&page_size=20`);
+		const response = await axios.get(`https://api.rawg.io/api/games?key=5413a8afe0ff47fb974634bca7ebdcb5&dates=${currentDate},${nextWeekDate}&page_size=20`);
 		
 		const dataFetched = [...response.data.results];
 		let games = [];
