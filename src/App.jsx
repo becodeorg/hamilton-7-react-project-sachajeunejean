@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from './pages/Homepage';
 import SearchResults from './pages/SearchResults';
+import SingleGame from './pages/SingleGame';
 import './scss/app.scss'
 
 function App() {
@@ -11,12 +12,14 @@ function App() {
 	const [newTrendyGames, setNewTrendyGames] = useState([]);
 	const [newReleasesGames, setNewReleasesGames] = useState([]);
 	const [nextWeekReleasesGames, setNextWeekReleasesGames] = useState([]);
+  const [game, setGame] = useState([]);
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={
           <Homepage
+            setGame={setGame}
             setSearchInput={setSearchInput}
             filtersElement={filtersElement}
             setFiltersElement={setFiltersElement}
@@ -30,7 +33,7 @@ function App() {
             setNextWeekReleasesGames={setNextWeekReleasesGames}
           />}
         />
-        <Route path="/search-results" element={
+        <Route path="/SearchResults" element={
           <SearchResults
             searchInput={searchInput}
             setSearchInput={setSearchInput}
@@ -38,6 +41,14 @@ function App() {
             setFiltersElement={setFiltersElement}
             filters={filters}
             setFilters={setFilters}
+          />} 
+        />
+        <Route path="/SingleGame/:name" element={
+          <SingleGame
+            game={game}
+            setSearchInput={setSearchInput}
+				    setFilters={setFilters}
+				    setFiltersElement={setFiltersElement}
           />} 
         />
         <Route path="*" element={<Homepage />} />

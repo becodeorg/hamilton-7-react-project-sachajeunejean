@@ -5,7 +5,7 @@ import Categories from '../components/Categories';
 import Hero from '../components/Hero';
 import Navbar from '../components/Navbar';
 
-const Homepage = ({ setSearchInput, filtersElement, setFiltersElement, filters, setFilters, newTrendyGames, setNewTrendyGames, newReleasesGames, setNewReleasesGames, nextWeekReleasesGames, setNextWeekReleasesGames }) => {
+const Homepage = ({ setSearchInput, filtersElement, setFiltersElement, filters, setFilters, newTrendyGames, setNewTrendyGames, newReleasesGames, setNewReleasesGames, nextWeekReleasesGames, setNextWeekReleasesGames, setGame }) => {
 
 	const getNewTrendyGames = async () => {
 		let date = new Date();
@@ -34,6 +34,7 @@ const Homepage = ({ setSearchInput, filtersElement, setFiltersElement, filters, 
 			const game = {
 				id: data.id,
 				name: data.name,
+				slug: data.slug,
 				date: data.released,
 				rating: data.rating,
 				platforms: data.platforms,
@@ -74,6 +75,7 @@ const Homepage = ({ setSearchInput, filtersElement, setFiltersElement, filters, 
 			const game = {
 				id: data.id,
 				name: data.name,
+				slug: data.slug,
 				date: data.released,
 				rating: data.rating,
 				platforms: data.platforms,
@@ -115,6 +117,7 @@ const Homepage = ({ setSearchInput, filtersElement, setFiltersElement, filters, 
 			const game = {
 				id: data.id,
 				name: data.name,
+				slug: data.slug,
 				date: data.released,
 				rating: data.rating,
 				platforms: data.platforms,
@@ -136,7 +139,8 @@ const Homepage = ({ setSearchInput, filtersElement, setFiltersElement, filters, 
 
 	return (
 		<div className="homepage-elements">
-			<Navbar 
+			<Navbar
+				onSingleGame={false}
 				setSearchInput={setSearchInput}
 				setFilters={setFilters}
 				setFiltersElement={setFiltersElement}
@@ -147,10 +151,12 @@ const Homepage = ({ setSearchInput, filtersElement, setFiltersElement, filters, 
 				filtersElement={filtersElement}
 				setFiltersElement={setFiltersElement}
 			/>
-			<Categories 
+			<Categories
 				newTrendyGames={newTrendyGames}
 				newReleasesGames={newReleasesGames}
 				nextWeekReleasesGames={nextWeekReleasesGames}
+				filters={filters}
+				setGame={setGame}
 			/>
 		</div>
 	);

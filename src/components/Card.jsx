@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import SingleGame from '../pages/SingleGame';
+import { NavLink, useNavigate, Link } from 'react-router-dom';
 
 const platformsList = {
 	"pc": "./src/assets/icons/computer.png",
@@ -16,25 +18,24 @@ const platformsList = {
 	"psp": "./src/assets/icons/ps-logo-of-games.png"
 }
 
-const Card = ({ gameInfos }) => {
+const Card = ({ gameInfos, filters, setGame }) => {
 	const [platforms, setPlatforms] = useState([]);
 	const [genres, setGenres] = useState([]);
+	const navigate = useNavigate();
 
 	const getPlatforms = () => {
 		let plats = [];
 
 		for (let platform of gameInfos.platforms) {
-			// if (!platform.platform.slug.includes("xbox-series") && !platform.platform.slug.includes("ios")) {
-				if (platform.platform.slug.includes("xbox") && !plats.includes("xbox")) {
-					plats.push("xbox");
-				} else if (platform.platform.slug.includes("playstation") && !plats.includes("playstation")) {
-					plats.push("playstation");
-				} else {
-					if (!plats.includes("playstation")) {
-						plats.push(platform.platform.slug);
-					}
+			if (platform.platform.slug.includes("xbox") && !plats.includes("xbox")) {
+				plats.push("xbox");
+			} else if (platform.platform.slug.includes("playstation") && !plats.includes("playstation")) {
+				plats.push("playstation");
+			} else {
+				if (!plats.includes("playstation")) {
+					plats.push(platform.platform.slug);
 				}
-			// }
+			}
 		}
 
 		setPlatforms(plats);
@@ -49,6 +50,10 @@ const Card = ({ gameInfos }) => {
 
 		setGenres(gen);
 	}
+
+	const onClickTitle = () => {
+		setGame(gameInfos);
+	};
 
 	useEffect(() => {
 		getPlatforms();
@@ -71,7 +76,11 @@ const Card = ({ gameInfos }) => {
 						<p>Score : {Math.floor(gameInfos.rating)}/5</p>
 					</div>
 			</div>
-			<h3>{gameInfos.name}</h3>
+			<h3>
+				<Link onClick={onClickTitle} to={{pathname:`/SingleGame/${gameInfos.slug}`}}>
+					{gameInfos.name}
+				</Link>
+			</h3>
 			<div className="game-infos">
 				<p>Released: <span className="card-date">{gameInfos.date}</span></p>
 				<p>Genres: {genres.map((genre, key) => <span key={key} className="genre">{genre}</span>)}</p>

@@ -19,7 +19,7 @@ const Hero = ({ filters, setFilters, filtersElement, setFiltersElement }) => {
 		}
 
 		for (let i = 0; i < filtersElement.length; i++) {
-			if (filterSelected.toLocaleLowerCase() === filtersElement[i].id) {
+			if (filterSelected.toLowerCase() === filtersElement[i].id) {
 				filtersElement[i].checked = false;
 			}
 		}

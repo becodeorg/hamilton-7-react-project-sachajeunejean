@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Filters = ({ isSearchClicked, setFilters, setFiltersElement }) => {
+const Filters = ({ onSingleGame, isSearchClicked, setFilters, setFiltersElement }) => {
 	const [isIconClicked, setIsIconCliked] = useState(false);
 	const [showMenu, setShowMenu] = useState(false);
 
@@ -35,7 +35,7 @@ const Filters = ({ isSearchClicked, setFilters, setFiltersElement }) => {
 	};
 
 	return (
-		<div className="filters">
+		<div className={onSingleGame ? "hide" : "filters"}>
 			<span onClick={handleIconClick} className={isSearchClicked ? "hide" : "menu-icon material-symbols-outlined"}>
 				{isIconClicked ? "close" : "menu"}
 			</span>

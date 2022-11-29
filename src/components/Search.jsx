@@ -18,7 +18,7 @@ const Search = ({ setSearchInput, isSearchClicked, setIsSearchClicked }) => {
 
 		if (e.target[0].value) {
 			setSearchInput(e.target[0].value);
-			navigate(`/search-results`);
+			navigate(`/SearchResults`);
 		}
 	};
 

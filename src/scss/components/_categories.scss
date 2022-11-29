@@ -12,6 +12,15 @@
 
         h3 {
             margin-bottom: 40px;
+
+            a {
+                color: white;
+                text-decoration: none;
+
+                &:hover {
+                    color: gray;
+                }
+            }
         }
 
         .category-list {

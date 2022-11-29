@@ -32,6 +32,7 @@
             display: flex;
             flex-direction: row;
             justify-content: space-between;
+            max-width: 305px;
             width: 80%;
 
             button {
@@ -42,6 +43,7 @@
                 border: none;
                 color: white;
                 font-size: 12px;
+                cursor: pointer;
             }
 
             .btn-confirm {
@@ -85,6 +87,7 @@
             border: 1px solid white;
             padding: 10px;
             border-radius: 10px;
+            cursor: pointer;
 
             &::before {
                 content: "x";
