@@ -3,19 +3,19 @@ import SingleGame from '../pages/SingleGame';
 import { NavLink, useNavigate, Link } from 'react-router-dom';
 
 const platformsList = {
-	"pc": "./src/assets/icons/computer.png",
-	"playstation": "./src/assets/icons/playstation-logotype.png",
-	"xbox": "./src/assets/icons/xbox-logo.png",
-	"xbox360": "./src/assets/icons/xbox-360-control-game-tool.png",
-	"xbox-series-x": "./src/assets/icons/xbox-360-control-game-tool.png",
-	"nintendo-switch": "./src/assets/icons/nintendo-switch.png",
-	"macos": "./src/assets/icons/apple.png",
-	"ios": "./src/assets/icons/apple.png",
-	"android": "./src/assets/icons/android.png",
-	"linux": "./src/assets/icons/linux-logo.png",
-	"nintendo-ds": "./src/assets/icons/nintendo-ds.png",
-	"ps-vita": "./src/assets/icons/ps-logo-of-games.png",
-	"psp": "./src/assets/icons/ps-logo-of-games.png"
+	"pc": "/assets/icons/computer.png",
+	"playstation": "/assets/icons/playstation-logotype.png",
+	"xbox": "/assets/icons/xbox-logo.png",
+	"xbox360": "/assets/icons/xbox-360-control-game-tool.png",
+	"xbox-series-x": "/assets/icons/xbox-360-control-game-tool.png",
+	"nintendo-switch": "/assets/icons/nintendo-switch.png",
+	"macos": "/assets/icons/apple.png",
+	"ios": "/assets/icons/apple.png",
+	"android": "/assets/icons/android.png",
+	"linux": "/assets/icons/linux-logo.png",
+	"nintendo-ds": "/assets/icons/nintendo-ds.png",
+	"ps-vita": "/assets/icons/ps-logo-of-games.png",
+	"psp": "/assets/icons/ps-logo-of-games.png"
 }
 
 const Card = ({ gameInfos, filters, setGame }) => {
@@ -55,16 +55,30 @@ const Card = ({ gameInfos, filters, setGame }) => {
 		setGame(gameInfos);
 	};
 
+	const compareToFilters = () => {
+		if (filters === undefined || filters.length === 0) {
+			return true;
+		}
+
+		for (let filter of filters) {
+			for (let platform of platforms) {
+				if (filter.toLowerCase() === platform.toLowerCase())
+					return true;
+			}
+		}
+		return false;
+	}
+
 	useEffect(() => {
 		getPlatforms();
 		getGenres();
-		console.log(gameInfos.id);
-	}, []);
+	}, [filters]);
 
 	return (
-		<li className="card">
-			<div className="game-image" style={{"backgroundImage": "url(" + gameInfos.bgImg + ")"}}>
-			</div>
+		<li className={compareToFilters() ? "card" : "hide"}>
+			<Link onClick={onClickTitle} to={{pathname:`/SingleGame/${gameInfos.id}`}}>
+				<div className="game-image" style={{"backgroundImage": "url(" + gameInfos.bgImg + ")"}}></div>
+			</Link>
 			<div className="top-card-wrapper">
 					<ul className="platforms">
 						{

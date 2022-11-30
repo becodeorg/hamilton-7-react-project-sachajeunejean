@@ -152,3 +152,10 @@
         }
     }
 }
+
+@media screen and (min-width: 700px) {
+    .menu {
+        width: 50% !important;
+        overflow-y: hidden;
+    }
+}

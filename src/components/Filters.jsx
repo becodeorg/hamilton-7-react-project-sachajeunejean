@@ -75,8 +75,8 @@ const Filters = ({ onSingleGame, isSearchClicked, setFilters, setFiltersElement 
 								<label htmlFor="pc">PC</label>
 							</li>
 							<li className="item">
-								<input id="switch" type="checkbox" />
-								<label htmlFor="switch">Switch</label>
+								<input id="nintendo-switch" type="checkbox" />
+								<label htmlFor="nintendo-switch">Switch</label>
 							</li>
 						</ul>
 					</div>

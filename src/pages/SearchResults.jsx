@@ -39,8 +39,7 @@ const SearchResults = ({ searchInput, setSearchInput, filtersElement, setFilters
 		} else {
 			setIsSearchInput(false);
 		}
-
-	}, [searchInput, titleSearch]);
+	}, [searchInput, titleSearch, filters]);
 
 	return (
 		<div className="page-wrapper">
@@ -59,6 +58,7 @@ const SearchResults = ({ searchInput, setSearchInput, filtersElement, setFilters
 				<Category
 					title={titleSearch}
 					games={searchGames}
+					filters={filters}
 				/>
 			</section>
 		</div>

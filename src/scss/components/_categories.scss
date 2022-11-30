@@ -31,6 +31,10 @@
             width: 95%;
             max-width: 1300px;
 
+            .hide {
+                display: none;
+            }
+
             .card {
                 display: flex;
                 flex-direction: column;

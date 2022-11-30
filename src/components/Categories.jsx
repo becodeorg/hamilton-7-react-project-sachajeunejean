@@ -17,7 +17,7 @@ const Categories = ({ newTrendyGames, newReleasesGames, nextWeekReleasesGames, f
 				setGame={setGame}
 			/>
 			<Category 
-				title="Next week releases"
+				title="Next releases"
 				games={nextWeekReleasesGames}
 				filters={filters}
 				setGame={setGame}
