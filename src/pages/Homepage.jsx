@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar';
 
 const Homepage = ({ setSearchInput, filtersElement, setFiltersElement, filters, setFilters, newTrendyGames, setNewTrendyGames, newReleasesGames, setNewReleasesGames, nextWeekReleasesGames, setNextWeekReleasesGames, setGame }) => {
 	const [isLoading, setIsLoading] = useState(true);
+	const [sorts, setSorts] = useState([]);
 
 	const getNewTrendyGames = async () => {
 		let date = new Date();
@@ -137,8 +138,7 @@ const Homepage = ({ setSearchInput, filtersElement, setFiltersElement, filters, 
 		getNewTrendyGames();
 		getNewReleasesGames();
 		getNextWeekReleases();
-		console.log(filters);
-	}, [filters]);
+	}, [filters, sorts]);
 
 	if (isLoading) {
 		return (
@@ -161,6 +161,8 @@ const Homepage = ({ setSearchInput, filtersElement, setFiltersElement, filters, 
 					setFilters={setFilters}
 					filtersElement={filtersElement}
 					setFiltersElement={setFiltersElement}
+					sorts={sorts}
+					setSorts={setSorts}
 				/>
 				<Categories
 					newTrendyGames={newTrendyGames}
@@ -168,6 +170,7 @@ const Homepage = ({ setSearchInput, filtersElement, setFiltersElement, filters, 
 					nextWeekReleasesGames={nextWeekReleasesGames}
 					filters={filters}
 					setGame={setGame}
+					sorts={sorts}
 				/>
 			</div>
 		);

@@ -24,6 +24,7 @@ const Game = () => {
 	const [currentGame, setCurrentGame] = useState([]);
 	const [screenshots, setScreenshots] = useState([]);
 	const params = useParams();
+	const [isLoading, setIsLoading] = useState(true);
 
 	const getCurrentGame = async () => {
 		let response = await axios.get(`https://api.rawg.io/api/games/${params.name}?token&key=5413a8afe0ff47fb974634bca7ebdcb5`);
@@ -48,36 +49,45 @@ const Game = () => {
 
 		response = await axios.get(`https://api.rawg.io/api/games?key=5413a8afe0ff47fb974634bca7ebdcb5&search=${response.data.slug}`);
 		setScreenshots(response.data.results[0].short_screenshots);
+		setIsLoading(false);
 	};
 
 	useEffect(() => {
 		getCurrentGame();
-	}, [params]);
+	}, [params, isLoading]);
 
-	return (
-		<section className="game-section">
-			<h2>{currentGame.name}</h2>
-			<GameCarousel  screenshots={screenshots}/>
-			<div className="screens-bottom">
-				<div className="left-side">
-					<ul className="platforms">
-						{
-							platforms.map((platform, key) => {
-								return <li key={key}><img src={platformsList[platform]} alt={platform} /></li>
-							})
-						}
-					</ul>
-				</div>
-				<div className="right-side">
-					<p>Score: {Math.floor(currentGame.rating)}/5</p>
-				</div>
+	if (isLoading) {
+		return (
+			<div className="loading-container">
+				<div className="lds-ring"><div></div><div></div><div></div><div></div></div>
 			</div>
-			<div className="about">
-				<h3>About</h3>
-				<div dangerouslySetInnerHTML={{__html: currentGame.description}}></div>
-			</div>
-		</section>
-	);
+		);
+	} else {
+		return (
+			<section className="game-section">
+				<h2>{currentGame.name}</h2>
+				<GameCarousel  screenshots={screenshots}/>
+				<div className="screens-bottom">
+					<div className="left-side">
+						<ul className="platforms">
+							{
+								platforms.map((platform, key) => {
+									return <li key={key}><img src={platformsList[platform]} alt={platform} /></li>
+								})
+							}
+						</ul>
+					</div>
+					<div className="right-side">
+						<p>Score: {Math.floor(currentGame.rating)}/5</p>
+					</div>
+				</div>
+				<div className="about">
+					<h3>About</h3>
+					<div dangerouslySetInnerHTML={{__html: currentGame.description}}></div>
+				</div>
+			</section>
+		);
+	}
 };
 
 export default Game;

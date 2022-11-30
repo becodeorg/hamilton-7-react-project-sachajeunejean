@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-const Hero = ({ filters, setFilters, filtersElement, setFiltersElement }) => {
+const Hero = ({ filters, setFilters, filtersElement, setFiltersElement, setSorts }) => {
 	const [isFilterClicked, setIsFilterClicked] = useState(false);
 	const [filterSelected, setFilterSelected] = useState("");
 
@@ -32,6 +32,12 @@ const Hero = ({ filters, setFilters, filtersElement, setFiltersElement }) => {
 	const declineFilterDelete = () => {
 		setIsFilterClicked(false);
 	}
+
+	const sortSelect = (e) => {
+		const input = e.target;
+		if (input.checked) setSorts([input.id]);
+		else setSorts([]);
+	};
  
 	return (
 		<section className="hero">
@@ -57,15 +63,15 @@ const Hero = ({ filters, setFilters, filtersElement, setFiltersElement }) => {
 				<h2>Sort by : </h2>
 				<ul className="sorts-list">
 					<li className="item">
-						<input id="date-added" type="checkbox" />
+						<input id="date-added" type="radio" name="sort" onClick={sortSelect} />
 						<label htmlFor="date-added">Date added</label>
 					</li>
 					<li className="item">
-						<input id="date-release" type="checkbox" />
+						<input id="date-release" type="radio" name="sort" onClick={sortSelect} />
 						<label htmlFor="date-release">Release date</label>
 					</li>
 					<li className="item">
-						<input id="name" type="checkbox" />
+						<input id="name" type="radio" name="sort" onClick={sortSelect} />
 						<label htmlFor="name">Name</label>
 					</li>
 				</ul>

@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import Card from './Card';
 
-const Category = ({ title, games, filters, setGame }) => {
-	const [byPassFilters, setByPassFilters] = useState(false);
+const Category = ({ title, games, filters, setGame, sorts }) => {
 
 	useEffect(() => {
-
-	}, [filters]);
+		switch (sorts[0]) {
+			case "name":
+				games.sort();
+			default:
+				break;
+		}
+	}, [filters, sorts]);
 
 	return (
 		<article className="category">
