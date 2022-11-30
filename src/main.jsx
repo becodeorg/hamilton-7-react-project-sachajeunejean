@@ -7,8 +7,3 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <App />
   </React.StrictMode>
 )
-
-document.querySelector('.filters').addEventListener('click', () => {
-  console.log("pass");
-  document.getElementById('root').style.overflowY = 'hidden';
-});

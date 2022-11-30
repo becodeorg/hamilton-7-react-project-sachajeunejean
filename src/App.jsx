@@ -47,8 +47,8 @@ function App() {
           <SingleGame
             game={game}
             setSearchInput={setSearchInput}
-				    setFilters={setFilters}
-				    setFiltersElement={setFiltersElement}
+			setFilters={setFilters}
+			setFiltersElement={setFiltersElement}
           />} 
         />
         <Route path="*" element={
