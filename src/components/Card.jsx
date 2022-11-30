@@ -69,13 +69,29 @@ const Card = ({ gameInfos, filters, setGame }) => {
 		return false;
 	}
 
+	const compareToGenres = () => {
+		if (filters === undefined || filters.length === 0) {
+			return true;
+		}
+
+		for (let filter of filters) {
+			for (let genre of genres) {
+				if (filter.toLowerCase() === genre.toLowerCase())
+					return true;
+			}
+		}
+		return false;
+	};
+
 	useEffect(() => {
 		getPlatforms();
 		getGenres();
 	}, [filters]);
 
 	return (
-		<li className={compareToFilters() ? "card" : "hide"}>
+		<li className={
+			compareToFilters() || compareToGenres() ? "card" : "hide"
+		}>
 			<Link onClick={onClickTitle} to={{pathname:`/SingleGame/${gameInfos.id}`}}>
 				<div className="game-image" style={{"backgroundImage": "url(" + gameInfos.bgImg + ")"}}></div>
 			</Link>

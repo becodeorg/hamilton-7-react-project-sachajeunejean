@@ -27,7 +27,10 @@ const Filters = ({ onSingleGame, isSearchClicked, setFilters, setFiltersElement 
 			if (e.target.elements[i].checked) {
 				let labels = e.target.elements[i].labels;
 				for (let label of labels) {
-					newFilters.push(label.textContent);
+					if (label.textContent === "Switch") 
+						newFilters.push("Nintendo-switch");
+					else
+						newFilters.push(label.textContent);
 				}
 			}
 		}
@@ -42,23 +45,6 @@ const Filters = ({ onSingleGame, isSearchClicked, setFilters, setFiltersElement 
 			<div className={showMenu ? "menu" : "hide"}>
 				<h2>FILTERS</h2>
 				<form onSubmit={handleSubmitFilters} className="filters-container">
-				<h3>Parameters</h3>
-					<div className="filters-container-grid">
-						<ul className="filters-grid">
-							<li className="item">
-								<input id="date-added" type="checkbox" />
-								<label htmlFor="date-added" className="date-added">Date-Added</label>
-							</li>
-							<li className="item">
-								<input id="date-release" type="checkbox" />
-								<label htmlFor="date-release" className="date-release">Release-Date</label>
-							</li>
-							<li className="item">
-								<input id="name" type="checkbox" />
-								<label htmlFor="name">Name</label>
-							</li>
-						</ul>
-					</div>
 					<h3>Platforms</h3>
 					<div className="filters-container-grid">
 						<ul className="filters-grid">

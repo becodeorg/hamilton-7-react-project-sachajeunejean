@@ -53,6 +53,23 @@ const Hero = ({ filters, setFilters, filtersElement, setFiltersElement }) => {
 					})
 				}
 			</ul>
+			<div className="sort-by-container">
+				<h2>Sort by : </h2>
+				<ul className="sorts-list">
+					<li className="item">
+						<input id="date-added" type="checkbox" />
+						<label htmlFor="date-added">Date added</label>
+					</li>
+					<li className="item">
+						<input id="date-release" type="checkbox" />
+						<label htmlFor="date-release">Release date</label>
+					</li>
+					<li className="item">
+						<input id="name" type="checkbox" />
+						<label htmlFor="name">Name</label>
+					</li>
+				</ul>
+			</div>
 		</section>
 	);
 };

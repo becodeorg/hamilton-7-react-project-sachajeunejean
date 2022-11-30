@@ -51,7 +51,22 @@ function App() {
 				    setFiltersElement={setFiltersElement}
           />} 
         />
-        <Route path="*" element={<Homepage />} />
+        <Route path="*" element={
+          <Homepage
+            setGame={setGame}
+            setSearchInput={setSearchInput}
+            filtersElement={filtersElement}
+            setFiltersElement={setFiltersElement}
+            filters={filters}
+            setFilters={setFilters}
+            newTrendyGames={newTrendyGames}
+            setNewTrendyGames={setNewTrendyGames}
+            newReleasesGames={newReleasesGames}
+            setNewReleasesGames={setNewReleasesGames}
+            nextWeekReleasesGames={nextWeekReleasesGames}
+            setNextWeekReleasesGames={setNextWeekReleasesGames}
+          />}
+        />
       </Routes>
     </BrowserRouter>
   );

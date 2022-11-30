@@ -6,6 +6,7 @@ import Hero from '../components/Hero';
 import Navbar from '../components/Navbar';
 
 const Homepage = ({ setSearchInput, filtersElement, setFiltersElement, filters, setFilters, newTrendyGames, setNewTrendyGames, newReleasesGames, setNewReleasesGames, nextWeekReleasesGames, setNextWeekReleasesGames, setGame }) => {
+	const [isLoading, setIsLoading] = useState(true);
 
 	const getNewTrendyGames = async () => {
 		let date = new Date();
@@ -129,37 +130,48 @@ const Homepage = ({ setSearchInput, filtersElement, setFiltersElement, filters, 
 			if (data.rating !== 0) games.push(game);
 		}
 		setNextWeekReleasesGames(games);
+		setIsLoading(false);
 	};
 
 	useEffect(() => {
 		getNewTrendyGames();
 		getNewReleasesGames();
 		getNextWeekReleases();
+		console.log(filters);
 	}, [filters]);
 
-	return (
-		<div className="homepage-elements">
-			<Navbar
-				onSingleGame={false}
-				setSearchInput={setSearchInput}
-				setFilters={setFilters}
-				setFiltersElement={setFiltersElement}
-			/>
-			<Hero 
-				filters={filters}
-				setFilters={setFilters}
-				filtersElement={filtersElement}
-				setFiltersElement={setFiltersElement}
-			/>
-			<Categories
-				newTrendyGames={newTrendyGames}
-				newReleasesGames={newReleasesGames}
-				nextWeekReleasesGames={nextWeekReleasesGames}
-				filters={filters}
-				setGame={setGame}
-			/>
-		</div>
-	);
+	if (isLoading) {
+		return (
+			<div className="loading-container">
+				<h2>EVERYONEGAMES</h2>
+				<div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+			</div>
+		);
+	} else {
+		return (
+			<div className="homepage-elements">
+				<Navbar
+					onSingleGame={false}
+					setSearchInput={setSearchInput}
+					setFilters={setFilters}
+					setFiltersElement={setFiltersElement}
+				/>
+				<Hero 
+					filters={filters}
+					setFilters={setFilters}
+					filtersElement={filtersElement}
+					setFiltersElement={setFiltersElement}
+				/>
+				<Categories
+					newTrendyGames={newTrendyGames}
+					newReleasesGames={newReleasesGames}
+					nextWeekReleasesGames={nextWeekReleasesGames}
+					filters={filters}
+					setGame={setGame}
+				/>
+			</div>
+		);
+	}
 };
 
 export default Homepage;

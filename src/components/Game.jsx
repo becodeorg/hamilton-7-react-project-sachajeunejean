@@ -4,19 +4,19 @@ import { useParams } from 'react-router';
 import GameCarousel from './GameCarousel';
 
 const platformsList = {
-	"pc": "../src/assets/icons/computer.png",
-	"playstation": "../src/assets/icons/playstation-logotype.png",
-	"xbox": "../src/assets/icons/xbox-logo.png",
-	"xbox360": "../src/assets/icons/xbox-360-control-game-tool.png",
-	"xbox-series-x": "../src/assets/icons/xbox-360-control-game-tool.png",
-	"nintendo-switch": "../src/assets/icons/nintendo-switch.png",
-	"macos": "../src/assets/icons/apple.png",
-	"ios": "../src/assets/icons/apple.png",
-	"android": "../src/assets/icons/android.png",
-	"linux": "../src/assets/icons/linux-logo.png",
-	"nintendo-ds": "../src/assets/icons/nintendo-ds.png",
-	"ps-vita": "../src/assets/icons/ps-logo-of-games.png",
-	"psp": "../src/assets/icons/ps-logo-of-games.png"
+	"pc": "/assets/icons/computer.png",
+	"playstation": "/assets/icons/playstation-logotype.png",
+	"xbox": "/assets/icons/xbox-logo.png",
+	"xbox360": "/assets/icons/xbox-360-control-game-tool.png",
+	"xbox-series-x": "/assets/icons/xbox-360-control-game-tool.png",
+	"nintendo-switch": "/assets/icons/nintendo-switch.png",
+	"macos": "/assets/icons/apple.png",
+	"ios": "/assets/icons/apple.png",
+	"android": "/assets/icons/android.png",
+	"linux": "/assets/icons/linux-logo.png",
+	"nintendo-ds": "/assets/icons/nintendo-ds.png",
+	"ps-vita": "/assets/icons/ps-logo-of-games.png",
+	"psp": "/assets/icons/ps-logo-of-games.png"
 }
 
 const Game = () => {
@@ -74,7 +74,7 @@ const Game = () => {
 			</div>
 			<div className="about">
 				<h3>About</h3>
-				<p>{currentGame.description_raw}</p>
+				<div dangerouslySetInnerHTML={{__html: currentGame.description}}></div>
 			</div>
 		</section>
 	);

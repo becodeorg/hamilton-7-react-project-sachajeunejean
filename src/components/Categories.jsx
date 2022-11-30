@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Category from './Category';
 
 const Categories = ({ newTrendyGames, newReleasesGames, nextWeekReleasesGames, filters, setGame }) => {
